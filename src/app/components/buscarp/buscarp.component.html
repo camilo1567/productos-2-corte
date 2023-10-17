@@ -1,0 +1,45 @@
+<!--
+<ul class="list-group">
+    <li *ngFor="let producto of misProductos; let i = index" class="list-group-item">
+        {{ i + 1 }} - {{ producto.nombre }}
+    </li>
+</ul>
+-->
+
+<h1>
+  Buscando: <small>{{ termino }}</small>
+</h1>
+<hr />
+
+<div class="row animated fadeIn fast" *ngIf="misProductos.length == 0">
+  <div class="col-md-12">
+    <div class="alert alert-info" role="alert">
+      No existen resultados con el término: {{ termino }}
+    </div>
+  </div>
+</div>
+
+<div class="container text-center">
+  <div class="row align-items-start">
+    <div *ngFor="let producto of misProductos; let i = index" class="col mt-4">
+
+
+      <app-producto [producto]="producto" [index]="i + 1"></app-producto>
+
+      <!--
+      <div class="card" style="width: 18rem">
+        <img src="{{ producto.sku }}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ i + 1 }} - {{ producto.nombre }}</h5>
+          <p class="card-text">{{ producto.descripcion }}</p>
+          <a (click)="verProducto(producto._id)" class="btn btn-primary"
+            >Ver Heroe
+          </a>
+        </div>
+      </div>
+      -->
+
+
+    </div>
+  </div>
+</div>

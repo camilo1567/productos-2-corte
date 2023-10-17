@@ -1,0 +1,1 @@
+export const URL_SERVICIOS_MONGO = "https://rest-sorella-production.up.railway.app/api";
