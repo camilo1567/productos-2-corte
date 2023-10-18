@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-4">
+          <img src="{{ 'https://ftp.quest.com.co/imagenes/'+producto.sku+'-1.jpg' }}" class="img-fluid" alt="Imagen del producto">
+      </div>
+      <div class="col-md-8">
+          <h2>{{ producto.nombre }}</h2>
+          <p>Precio: ${{ producto.precio }}</p>
+          <p>Color: <span style="background-color: #FF5733; color: #FFF;">{{ producto.color }}</span></p>
+          <p>Calificación: 4.5 / 5</p>
+          <p>IVA: $16.00</p>
+          <p>Cantidad: <input type="number" value="1" min="1"></p>
+          <p>{{ producto.descripcion }}</p>
+          <button class="btn btn-primary">Agregar al Carrito</button>
+      </div>
+
+
+      <div *ngFor="let imagen of imagenes; let i = index" class="mt-4 col">
+        <div class="card" style="width: 18rem" *ngIf="imagen.url != 'https://ftp.quest.com.co/imagenes/'+producto.sku+'-1.jpg'">
+          <img src="{{ imagen.url }}" alt="">
+        </div>
+      </div>
+
+  </div>
+</div>

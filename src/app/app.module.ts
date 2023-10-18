@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BuscarpComponent } from './components/buscarp/buscarp.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ProductoComponent } from './components/producto/producto.component';
+import { ProductInformationComponent } from './product-information/product-information.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ProductoComponent } from './components/producto/producto.component';
     HomeComponent,
     BuscarpComponent,
     ProductosComponent,
-    ProductoComponent
+    ProductoComponent,
+    ProductInformationComponent
   ],
   imports: [
     BrowserModule,

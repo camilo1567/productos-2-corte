@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MongodbService } from 'src/app/services/mongodb.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class BuscarpComponent {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private mongodb: MongodbService
   ) {}
 
@@ -22,7 +23,12 @@ export class BuscarpComponent {
       //this.heroes = this._heroesService.buscarHeroes( params['termino'] );
       console.log(this.termino);
 
-      this.cargarProductos();
+      let cargarProductos = this.cargarProductos();
+
+      if(this.termino.length == 0){
+        cargarProductos = this.cargarProductosxReferencia();
+      }
+
     });
   }
 
@@ -36,5 +42,17 @@ export class BuscarpComponent {
       });
   }
 
-  verProducto(id: string) {}
+  async cargarProductosxReferencia() {
+    await this.mongodb
+      .getReferenciasXProducto(this.termino)
+      .toPromise()
+      .then((resp: any) => {
+        this.misProductos = resp.results;
+        //console.log('PRODUCTOS', this.misProductos);
+      });
+  }
+
+  verProducto(id: string) {
+    this.router.navigate( ['/producto',id] );
+  }
 }

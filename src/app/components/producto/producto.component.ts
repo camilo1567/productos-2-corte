@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Multimedia, Producto, Referencia } from 'src/app/interfaces';
 import { MongodbService } from 'src/app/services/mongodb.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-producto',
@@ -41,9 +43,13 @@ export class ProductoComponent {
   cantidadCarrito!:number;
 
 
-  constructor(private mongodb: MongodbService
+  constructor(
+    private mongodb: MongodbService,
+    private router: Router,
   ) { }
 
-  verProducto(id: string) {} 
+  verProducto(id: string) {
+    this.router.navigate( ['/producto',id] );
+  }
 
 }

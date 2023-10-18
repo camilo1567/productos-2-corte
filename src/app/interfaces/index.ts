@@ -89,6 +89,9 @@ export interface Producto {
     IdGarantia:       string;
     usuario:          IDUsuario;
     fecha_creacion:   Date;
+    precio:           number;
+    iva:              number;
+    color:            string;
 }
 
 
